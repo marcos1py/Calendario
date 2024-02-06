@@ -1,0 +1,116 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+h1 {
+    color: #ff9900;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+p {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #ff8c00;
+}
+
+.options {
+    display: flex;
+    
+}
+
+.options label {
+    margin-right: 11px; /* Ajuste o valor conforme necessário para o espaçamento desejado */
+}
+button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #ff9900;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #ff8c00;
+}
+.radar-chart {
+    width: 300px;
+    height: 300px;
+    margin: 50px;
+    position: relative;
+}
+
+.axis {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.line {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.5s ease;
+}
+.chart-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.chart-container > div {
+    margin: 0 10px; /* Espaçamento entre os gráficos, ajuste conforme necessário */
+    flex-grow: 1; /* Permite que os elementos cresçam para preencher o espaço disponível */
+}
+
+
+
+
+#grafico1,
+#grafico2,
+#grafico3 {
+    width: 300px;
+    height: 200px;
+    margin: 10px;
+}
+
+#grafico2 {
+    align-self: center; /* Move o gráfico 2 para a parte inferior do contêiner */
+}
+.btn-google {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    color: white; /* Cor do texto branca */
+}

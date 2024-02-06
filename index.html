@@ -1,78 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- arquivos style -->
-  <link href="./css/style.css" rel="stylesheet">
-  <link href="./css/darkMode.css" rel="stylesheet">
-
-  <title>Calendario</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário e Geração de XLSX</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-  <!-- dark mode -->
-  
-  <div class="toggle">
-    <input id="switch" type="checkbox" name="theme">
-    <label for="switch">Toggle</label>
-  </div>
-
-<!-- -------- -->
 
 <body>
-  <div id="container">
-      <div id="header">
-        <div id="monthDisplay"></div>
+
+    <div class="container" id="container-principal">
+
+
+        <form id="surveyForm">
+            <h1>Cadastro</h1>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" required>
+            <label for="phone">Número de telefone:</label>
+            <input type="tel" id="phone" required>
+            <button type="button" id="checkAvailabilityBtn">Verificar Disponibilidade</button>
+        </form>
+
+        <div id="availabilityContainer" style="display: none;">
+            <h1>Formulário</h1>
+            <form id="secondForm">
+                <div id="questions-container"></div>
+                <button type="button" id="generateResultBtn">Gerar Resultado</button>
+            </form>
+        </div>
+
+    </div>
+
+    <div>
 
         <div>
-          <button id="backButton">Voltar</button>
-          <button id="nextButton">Próximo</button>
+            <div class="">
+
+                <h1 id="alreadyScheduledMsg" style="display: none;">Agenda uma reunião gratuita com um de
+                    nossos especialistas!</h1>
+            </div>
+            <div class="graficos">
+                <div class="chart-container">
+                    <div id="grafico2"></div>
+                    <div id="grafico1"></div>
+
+                    <div id="grafico3"></div>
+                </div>
+            </div>
+            <div class="agendameto" id="agendameto" style="display: none;">
+                <div class="btn-google" >
+                    <!-- Google Calendar Appointment Scheduling begin -->
+                    <link  href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+                    <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+                    <script>
+                        (function () {
+                            var target = document.currentScript;
+                            window.addEventListener('load', function () {
+                                calendar.schedulingButton.load({
+                                    url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Dsl9FH3js-R6YfzXuwWimDEIg5c6-rWkT2Q-Aom_KvSqAHXTqLgAkGGIGBKvWZDFGhaP8oJOt?gv=true',
+                                    color: '#ff8c00',
+                                    label: 'Agendar um compromisso',
+                                    target,
+                                });
+                            });
+                        })();
+                    </script>
+                    <!-- end Google Calendar Appointment Scheduling -->
+                </div>
+            </div>
         </div>
-          
-      </div>
+    </div>
+    <!-- Adicione esses links no head -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx"></script>
 
-      <div id="weekdays">
-        <div>Domingo</div>
-        <div>Segunda-feira</div>
-        <div>Terça-feira</div>
-        <div>Quarta-feira</div>
-        <div>Quinta-feira</div>
-        <div>Sexta-feira</div>
-        <div>Sábado</div>
-      </div>
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('checkAvailabilityBtn').addEventListener('click', function () {
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
 
+            // Verifica se ambos os campos foram preenchidos corretamente
+            if (email.trim() !== '' && phone.trim() !== '') {
+                document.getElementById('availabilityContainer').style.display = 'block';
+                document.getElementById('surveyForm').style.display = 'none';
 
-      <!-- div dinamic -->
-      <div id="calendar" ></div>
-
-   
-  </div>
-
-  <div id="newEventModal">
-    <h2>New Evente</h2>
-
-    <input id="eventTitleInput" placeholder="Event Title"/>
-
-    <button id="saveButton"> Salvar</button>
-    <button id="cancelButton">Cancelar</button>
-  </div>
-
-  <div id="deleteEventModal">
-    <h2>Evento</h2>
-
-    <div id="eventText"></div><br>
-
-
-    <button id="deleteButton">Deletar</button>
-    <button id="closeButton">Fechar</button>
-  </div>
-
-  <div id="modalBackDrop"></div>
-
-
-  <script src="scripts/darkMode.js"></script>
-  <script src="./scripts/main.js"></script>
-  
+            } else {
+                alert('Preencha ambos os campos corretamente.');
+            }
+        });
+    </script>
 </body>
+
 </html>
